@@ -17,7 +17,9 @@ if st.button("Check News"):
     if news_text.strip() == "":
         st.warning("Please enter some text!")
     else:
-        X = vectorizer.transform([news_text])   # ✅ VERY IMPORTANT LINE
-        prediction = model.predict(X)[0]        # ✅ NOT raw text
-        st.success(f"The news is: **{prediction}**")
+        X = vectorizer.transform([news_text])
+        prediction = model.predict(X)[0]
+        # Reverse the prediction (0=REAL, 1=FAKE)
+        result = "REAL" if prediction == 0 else "FAKE"
+        st.success(f"The news is: **{result}**")
 
