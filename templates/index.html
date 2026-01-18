@@ -154,7 +154,7 @@
       </div>
     </div>
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-      <img class="object-cover object-center rounded-lg shadow-2xl" alt="hero" src="/static/image.svg.svg">
+      <img class="object-cover object-center rounded-lg shadow-2xl" alt="hero" src="{{ url_for('static', filename='image.svg.svg') }}">
     </div>
   </div>
 </section>
@@ -199,43 +199,6 @@
   </div>
 </section>
 
-<section class="text-gray-600 body-font py-16 bg-white">
-  <div class="container px-5 py-24 mx-auto">
-    <h1 class="section-title text-center">What Users Say About Us</h1>
-    <div class="flex flex-wrap -m-4">
-      <div class="p-4 md:w-1/2 w-full">
-        <div class="testimonial-card">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 text-amber-400 mb-4" viewBox="0 0 975.036 975.036">
-            <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
-          </svg>
-          <p class="leading-relaxed mb-6 text-gray-700 font-medium">This fake news detection tool has been incredibly accurate and easy to use. It helped our team verify sources and maintain journalistic integrity. The machine learning model provides fast, reliable results that we can trust.</p>
-          <a class="inline-flex items-center">
-            <img alt="testimonial" src="https://dummyimage.com/106x106" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center border-2 border-amber-300">
-            <span class="flex-grow flex flex-col pl-4">
-              <span class="title-font font-semibold text-gray-900">Holden Caulfield</span>
-              <span class="text-gray-500 text-sm">Journalist</span>
-            </span>
-          </a>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/2 w-full">
-        <div class="testimonial-card">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 text-amber-400 mb-4" viewBox="0 0 975.036 975.036">
-            <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
-          </svg>
-          <p class="leading-relaxed mb-6 text-gray-700 font-medium">As a content creator, this tool is essential for fact-checking. It quickly identifies suspicious articles and helps me share only verified information with my audience. The accuracy and speed are impressive!</p>
-          <a class="inline-flex items-center">
-            <img alt="testimonial" src="https://dummyimage.com/107x107" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center border-2 border-amber-300">
-            <span class="flex-grow flex flex-col pl-4">
-              <span class="title-font font-semibold text-gray-900">Alper Kamu</span>
-              <span class="text-gray-500 text-sm">Content Creator</span>
-            </span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 <section class="text-gray-600 body-font py-16" id="features">
   <div class="container px-5 py-24 mx-auto">
     <h1 class="section-title text-center">Why Choose Our Detection System?</h1>
@@ -301,53 +264,6 @@
   </div>
 </section>
 
-<section class="text-gray-600 body-font py-16 bg-gray-50" id="contact-form">
-  <div class="container mx-auto px-5 py-24">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Have questions about our fake news detection system? Want to collaborate or provide feedback? We'd love to hear from you!</p>
-    </div>
-    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
-      <div class="bg-white rounded-lg p-8 text-center shadow-lg hover:shadow-xl transition">
-        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Email</h3>
-        <p class="text-gray-600 mb-4">contact@fakenewsdetection.com</p>
-        <a href="mailto:contact@fakenewsdetection.com" class="text-amber-500 hover:text-amber-600 font-semibold">Send Email →</a>
-      </div>
-      <div class="bg-white rounded-lg p-8 text-center shadow-lg hover:shadow-xl transition">
-        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948.684l1.498 7.487a1 1 0 00.502.756l2.048 1.029a11.05 11.05 0 010-1.953m0 0a11 11 0 015.493-6.5m0 0a8.9 8.9 0 012.14-.306"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Phone</h3>
-        <p class="text-gray-600 mb-4">+1 (555) 123-4567</p>
-        <a href="tel:+15551234567" class="text-amber-500 hover:text-amber-600 font-semibold">Call Us →</a>
-      </div>
-      <div class="bg-white rounded-lg p-8 text-center shadow-lg hover:shadow-xl transition">
-        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Location</h3>
-        <p class="text-gray-600 mb-4">San Francisco, CA 94105</p>
-        <a href="#" class="text-amber-500 hover:text-amber-600 font-semibold">Visit Us →</a>
-      </div>
-    </div>
-    <div class="mt-16 bg-gradient-to-r from-purple-600 to-purple-800 rounded-lg p-8 text-white text-center">
-      <h3 class="text-2xl font-bold mb-4">Ready to Check News?</h3>
-      <p class="mb-6 text-purple-100">Try our fake news detection tool and see the power of machine learning in action</p>
-      <a href="/prediction" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">Start Checking News Now</a>
-    </div>
-  </div>
-</section>
-
 <footer class="text-gray-600 body-font bg-gray-900 text-white">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap md:text-left text-center order-first">
@@ -368,92 +284,17 @@
           </li>
         </nav>
       </div>
-      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 class="title-font font-bold text-white tracking-widest text-sm mb-3">RESOURCES</h2>
-        <nav class="list-none mb-10">
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white transition">API Documentation</a>
-          </li>
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white transition">FAQ & Support</a>
-          </li>
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white transition">Tutorials & Guides</a>
-          </li>
-          <li>
-            <a href="#contact-form" class="text-gray-400 hover:text-white transition">Contact Support</a>
-          </li>
-        </nav>
-      </div>
-      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 class="title-font font-bold text-white tracking-widest text-sm mb-3">LEGAL</h2>
-        <nav class="list-none mb-10">
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
-          </li>
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a>
-          </li>
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white transition">AI Disclaimer</a>
-          </li>
-        </nav>
-      </div>
-      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 class="title-font font-bold text-white tracking-widest text-sm mb-3">FOLLOW US</h2>
-        <p class="text-gray-400 text-sm mb-4">Stay updated with the latest in fake news detection and media literacy</p>
-        <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
-          <a href="#" class="text-gray-400 hover:text-amber-400 transition border border-gray-600 p-2 rounded hover:border-amber-400" title="Facebook">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M18 2h-3a6 6 0 00-6 6v3H7v4h3v8h4v-8h3l1-4h-4V8a1 1 0 011-1h3z"></path>
-            </svg>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-amber-400 transition border border-gray-600 p-2 rounded hover:border-amber-400" title="Twitter">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-            </svg>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-amber-400 transition border border-gray-600 p-2 rounded hover:border-amber-400" title="Instagram">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01" fill="currentColor"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="bg-gray-800 border-t border-gray-700">
-    <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-      <a class="flex title-font font-bold items-center md:justify-start justify-center text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg>
-        <span class="ml-3 text-lg">Fake News Detection</span>
-      </a>
-      <p class="text-gray-400 text-sm md:ml-6 md:mt-0 mt-4">© 2026 Fake News Detection. All Rights Reserved.
-        <a href="#" class="text-white ml-1 hover:text-amber-400">Made with care</a>
-      </p>
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start gap-3">
-        <a href="/prediction" class="text-white hover:text-amber-400 transition font-semibold">Try Now</a>
-        <span class="text-gray-600">|</span>
-        <a href="#about" class="text-white hover:text-amber-400 transition font-semibold">Learn More</a>
-      </span>
+    <div class="text-center mt-8">
+      <p class="text-gray-400">© 2026 Fake News Detection. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/lA7E0uAqB5E6w5X9Z8Zl0ZK7E6WnJZ0zQe1X4dKJIp4j" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5uH+fK3" crossorigin="anonymous"></script>
-    -->
   </body>
 </html>

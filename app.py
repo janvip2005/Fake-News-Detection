@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import pickle
-import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 app = Flask(__name__)
@@ -8,15 +7,9 @@ app = Flask(__name__)
 # Load the trained model
 model = pickle.load(open('finalized_model.pkl', 'rb'))
 
-# We need to recreate the TfidfVectorizer with the same parameters
-df = pd.read_csv("news.csv.csv")
-labels = df.label
-from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(df["text"], labels, test_size=0.2, random_state=20)
-
-# Initialize and fit the vectorizer (same as in notebook)
-vector = TfidfVectorizer(stop_words='english', max_df=0.7)
-vector.fit(x_train)
+# Load the fitted TF-IDF vectorizer used during training
+with open("vectorizer.pkl", "rb") as f:
+    vector = pickle.load(f)
 
 @app.route('/')
 def home():
@@ -29,6 +22,8 @@ def prediction():
 @app.route('/predict', methods=['POST', 'GET'])
 def predict():
     prediction_text = None
+    confidence = None
+    result_class = None
     if request.method == 'POST':
         news = request.form.get('news', '')
         
@@ -36,11 +31,24 @@ def predict():
             # Transform the input using the vectorizer
             news_vector = vector.transform([news])
             
+            # Get prediction probabilities
+            proba = model.decision_function(news_vector)[0]
+            
             # Make prediction
             result = model.predict(news_vector)[0]
-            prediction_text = f'News is: {result}'
+            
+            # Calculate confidence (convert to percentage)
+            confidence = abs(proba) * 10
+            if confidence > 100:
+                confidence = 100
+            confidence = round(confidence, 1)
+            
+            # Reverse the prediction (0=REAL, 1=FAKE)
+            final_result = "REAL" if result == 0 else "FAKE"
+            result_class = "real" if final_result == "REAL" else "fake"
+            prediction_text = final_result
     
-    return render_template('prediction.html', prediction_text=prediction_text)
+    return render_template('prediction.html', prediction_text=prediction_text, confidence=confidence, result_class=result_class)
     
 if __name__ == '__main__':
     app.run(debug=True)

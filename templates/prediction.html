@@ -1,14 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <title>Fake News Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Fake News Detection - Check News</title>
     <style>
       body {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -19,28 +16,10 @@
         background: white !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
-      .nav-link {
-        position: relative;
-        transition: color 0.3s ease;
-      }
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #f59e0b 0%, #f97316 100%);
-        transition: width 0.3s ease;
-      }
-      .nav-link:hover::after {
-        width: 100%;
-      }
       .prediction-hero {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         padding: 60px 0;
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
       }
       .form-section {
         background: white;
@@ -92,11 +71,6 @@
         color: white;
         text-decoration: none;
       }
-      .form-text {
-        color: #6b7280;
-        font-size: 0.95rem;
-        margin-top: 8px;
-      }
       .result-box {
         background: linear-gradient(135deg, #d4f4dd 0%, #c6f6d5 100%);
         border-left: 4px solid #10b981;
@@ -119,23 +93,6 @@
       .result-box.fake h4 {
         color: #7f1d1d;
       }
-      .info-box {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 12px;
-        padding: 24px;
-        margin-top: 30px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-      }
-      .info-box h3 {
-        color: #1f2937;
-        font-weight: 700;
-        margin-bottom: 16px;
-      }
-      .info-box p {
-        color: #4b5563;
-        line-height: 1.8;
-        margin-bottom: 12px;
-      }
       footer {
         background: #1f2937 !important;
         color: white;
@@ -145,99 +102,95 @@
   </head>
   <body>
     <header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-      </svg>
-      <span class="ml-3 text-xl font-bold text-black">Fake News Detection</span>
-    </a>
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      <a href="/" class="nav-link mr-5 text-gray-700 hover:text-amber-500 font-medium">Home</a>
-      <a href="/#about" class="nav-link mr-5 text-gray-700 hover:text-amber-500 font-medium">About</a>
-      <a href="/prediction" class="nav-link mr-5 text-gray-700 hover:text-amber-500 font-medium active">Try It</a>
-      <a href="/#contact" class="nav-link mr-5 text-gray-700 hover:text-amber-500 font-medium">Contact</a>
-    </nav>
-  </div>
-</header><hr>
-<section class="prediction-hero">
-  <div class="container mx-auto px-5 py-24">
-    <div class="flex flex-col text-center w-full">
-      <h1 class="sm:text-5xl text-4xl font-bold title-font mb-4 text-white">Check News Authenticity
-        <br class="hidden lg:inline-block">
-        <span class="text-yellow-300 font-bold">Instantly</span>
-      </h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-lg text-gray-100">Paste any news article, headline, or text and let our advanced machine learning model analyze it in real-time. Get instant results to determine if the content is likely real or fake news.</p>
-    </div>
-  </div>
-</section>
-
-<section class="pb-24">
-  <div class="container mx-auto px-5">
-    <div class="form-section">
-      <form action="/predict" method="POST">
-        <div class="mb-3">
-          <label for="news" class="form-label">📰 Enter News Text or Headline</label>
-          <textarea class="form-control" id="news" name="news" rows="6" placeholder="Paste your news article, headline, or text here..." required></textarea>
-          <div class="form-text">✓ Analyze the authenticity of any news content in seconds</div>
-        </div>
-        <button type="submit" class="btn-submit">🔍 Check Authenticity</button>
-      </form>
-
-      {% if prediction_text %}
-        <div class="result-box {% if 'FAKE' in prediction_text %}fake{% endif %}">
-          <h4>{{ prediction_text }}</h4>
-        </div>
-      {% endif %}
-    </div>
-
-    <div class="info-box">
-      <h3>📌 How It Works</h3>
-      <p><strong>1. Natural Language Processing:</strong> Our system analyzes the text structure, vocabulary, and linguistic patterns to identify signs of misinformation.</p>
-      <p><strong>2. Pattern Recognition:</strong> The model is trained on millions of real and fake news articles, allowing it to recognize common deceptive patterns.</p>
-      <p><strong>3. Real-Time Analysis:</strong> Get instant results with confidence levels to help you make informed decisions about the content you read.</p>
-    </div>
-  </div>
-</section>
-
-
-<footer class="bg-gray-900 text-white py-12">
-  <div class="container mx-auto px-5">
-    <div class="flex flex-wrap justify-between">
-      <div class="w-full md:w-1/3 mb-8 md:mb-0">
-        <a href="/" class="flex title-font font-bold items-center text-white mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span class="ml-3 text-lg">Fake News Detection</span>
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <span class="ml-3 text-xl font-bold text-black">Fake News Detection</span>
         </a>
-        <p class="text-gray-400">Empowering users with advanced machine learning technology to identify misinformation.</p>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          <a href="/" class="mr-5 text-gray-700 hover:text-amber-500 font-medium">Home</a>
+          <a href="/#about" class="mr-5 text-gray-700 hover:text-amber-500 font-medium">About</a>
+          <a href="/prediction" class="mr-5 text-gray-700 hover:text-amber-500 font-medium active">Try It</a>
+        </nav>
       </div>
-      <div class="w-full md:w-1/3 text-center">
-        <h3 class="text-white font-bold mb-4">Quick Links</h3>
-        <a href="/" class="text-gray-400 hover:text-white block mb-2">Home</a>
-        <a href="/#features" class="text-gray-400 hover:text-white block mb-2">Features</a>
-        <a href="/prediction" class="text-gray-400 hover:text-white block mb-2">Try Now</a>
-        <a href="/#contact" class="text-gray-400 hover:text-white block">Contact</a>
+    </header>
+
+    <section class="prediction-hero">
+      <div class="container mx-auto px-5 py-24">
+        <div class="flex flex-col text-center w-full">
+          <h1 class="sm:text-5xl text-4xl font-bold title-font mb-4 text-white">Check News Authenticity
+            <br class="hidden lg:inline-block">
+            <span class="text-yellow-300 font-bold">Instantly</span>
+          </h1>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-lg text-gray-100">Paste any news article, headline, or text and let our advanced machine learning model analyze it in real-time.</p>
+        </div>
       </div>
-      <div class="w-full md:w-1/3 text-right">
-        <h3 class="text-white font-bold mb-4">Get Started</h3>
+    </section>
+
+    <section class="pb-24">
+      <div class="container mx-auto px-5">
+        <div class="form-section">
+          <form action="/predict" method="POST">
+            <div class="mb-3">
+              <label for="news" class="form-label">📰 Enter News Text or Headline</label>
+              <textarea class="form-control" id="news" name="news" rows="6" placeholder="Paste your news article, headline, or text here..." required></textarea>
+              <div style="color: #6b7280; font-size: 0.85rem; margin-top: 8px;">💡 Best results with political and general news articles</div>
+            </div>
+            <button type="submit" class="btn-submit">🔍 Check Authenticity</button>
+          </form>
+
+          <!-- Example News Buttons -->
+          <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <p style="color: #4b5563; font-weight: 600; margin-bottom: 12px;">📝 Try Example News:</p>
+            <button onclick="fillExample(1)" style="background: #10b981; color: white; padding: 8px 16px; border-radius: 6px; border: none; margin: 5px; cursor: pointer; font-size: 0.9rem;">Example 1 (Real)</button>
+            <button onclick="fillExample(2)" style="background: #ef4444; color: white; padding: 8px 16px; border-radius: 6px; border: none; margin: 5px; cursor: pointer; font-size: 0.9rem;">Example 2 (Fake)</button>
+          </div>
+
+          <script>
+            function fillExample(num) {
+              const textarea = document.getElementById('news');
+              if (num === 1) {
+                textarea.value = "Washington (CNN) -- Congressional Republicans, emboldened by their midterm election gains, are vowing to block President Barack Obama's efforts to close the Guantanamo Bay detention center. The facility houses suspected terrorists and has been a source of international controversy.";
+              } else if (num === 2) {
+                textarea.value = "BREAKING: Secret documents reveal that the government is hiding aliens in underground facilities. Anonymous sources claim that evidence has been destroyed to cover up the truth about extraterrestrial life.";
+              }
+            }
+          </script>
+
+          {% if prediction_text %}
+            <div class="result-box {{ result_class }}">
+              {% if result_class == 'real' %}
+                <div style="text-align: center;">
+                  <div style="font-size: 4rem; margin-bottom: 10px;">✅</div>
+                  <h2 style="font-size: 2rem; margin: 0; color: #065f46;">REAL NEWS</h2>
+                  <p style="font-size: 1.1rem; margin-top: 10px; color: #047857;">This appears to be authentic news</p>
+                </div>
+              {% else %}
+                <div style="text-align: center;">
+                  <div style="font-size: 4rem; margin-bottom: 10px;">❌</div>
+                  <h2 style="font-size: 2rem; margin: 0; color: #7f1d1d;">FAKE NEWS</h2>
+                  <p style="font-size: 1.1rem; margin-top: 10px; color: #991b1b;">This may be false or misleading</p>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 24px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); max-width: 700px; margin-left: auto; margin-right: auto;">
+          <h3 style="color: #1f2937; font-weight: 700; margin-bottom: 16px;">📌 How It Works</h3>
+          <p style="color: #4b5563; line-height: 1.8; margin-bottom: 12px;"><strong>1. Natural Language Processing:</strong> Our system analyzes the text structure, vocabulary, and linguistic patterns to identify signs of misinformation.</p>
+          <p style="color: #4b5563; line-height: 1.8; margin-bottom: 12px;"><strong>2. Pattern Recognition:</strong> The model is trained on millions of real and fake news articles, allowing it to recognize common deceptive patterns.</p>
+          <p style="color: #4b5563; line-height: 1.8;"><strong>3. Real-Time Analysis:</strong> Get instant results to help you make informed decisions about the content you read.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-5 text-center">
+        <p class="mb-2">© 2026 Fake News Detection. All Rights Reserved.</p>
         <a href="/prediction" class="inline-block bg-gradient-to-r from-amber-400 to-orange-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition">Check News Now</a>
-        <p class="text-gray-400 mt-4 text-sm">© 2026 Fake News Detection. All Rights Reserved.</p>
       </div>
-    </div>
-  </div>
-</footer>
+    </footer>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/lA7E0uAqB5E6w5X9Z8Zl0ZK7E6WnJZ0zQe1X4dKJIp4j" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5uH+fK3" crossorigin="anonymous"></script>
-    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
