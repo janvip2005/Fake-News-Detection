@@ -138,24 +138,6 @@
             <button type="submit" class="btn-submit">🔍 Check Authenticity</button>
           </form>
 
-          <!-- Example News Buttons -->
-          <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
-            <p style="color: #4b5563; font-weight: 600; margin-bottom: 12px;">📝 Try Example News:</p>
-            <button onclick="fillExample(1)" style="background: #10b981; color: white; padding: 8px 16px; border-radius: 6px; border: none; margin: 5px; cursor: pointer; font-size: 0.9rem;">Example 1 (Real)</button>
-            <button onclick="fillExample(2)" style="background: #ef4444; color: white; padding: 8px 16px; border-radius: 6px; border: none; margin: 5px; cursor: pointer; font-size: 0.9rem;">Example 2 (Fake)</button>
-          </div>
-
-          <script>
-            function fillExample(num) {
-              const textarea = document.getElementById('news');
-              if (num === 1) {
-                textarea.value = "Washington (CNN) -- Congressional Republicans, emboldened by their midterm election gains, are vowing to block President Barack Obama's efforts to close the Guantanamo Bay detention center. The facility houses suspected terrorists and has been a source of international controversy.";
-              } else if (num === 2) {
-                textarea.value = "BREAKING: Secret documents reveal that the government is hiding aliens in underground facilities. Anonymous sources claim that evidence has been destroyed to cover up the truth about extraterrestrial life.";
-              }
-            }
-          </script>
-
           {% if prediction_text %}
             <div class="result-box {{ result_class }}">
               {% if result_class == 'real' %}
