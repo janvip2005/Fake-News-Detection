@@ -17,12 +17,12 @@ with open("finalized_model.pkl", "rb") as f:
 col1, col2 = st.columns(2)
 with col1:
     if st.button("📝 Try Example 1", type="secondary"):
-        st.session_state.example_text = "President announces new economic stimulus package aimed at creating jobs. The package includes tax cuts and infrastructure investments. Economic advisors predict the package will boost GDP growth by 2-3 percent over the next fiscal year."
+        st.session_state.example_text = "The United Nations Security Council voted to increase humanitarian aid to developing countries. The resolution passed with support from all permanent members. Aid will focus on healthcare, education, and infrastructure development."
         st.rerun()
         
 with col2:
     if st.button("📝 Try Example 2", type="secondary"):
-        st.session_state.example_text = "Shocking discovery: Scientists claim they have found proof that the earth is flat. A group of researchers say NASA has been lying about the shape of our planet for decades. They claim to have video evidence but refuse to show it publicly."
+        st.session_state.example_text = "Breaking: A new miracle pill discovered cures all diseases instantly. Doctors are shocked and angry about this breakthrough. Hospitals will go out of business. Big pharma is trying to hide this from the public."
         st.rerun()
 
 # Fill text area with example if clicked
