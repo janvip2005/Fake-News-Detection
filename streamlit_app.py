@@ -3,6 +3,8 @@ import pickle
 
 st.title("Fake News Detection")
 
+st.info("⚠️ Note: This model was trained on a specific dataset. It works best with political and general news articles. Results may not be 100% accurate.")
+
 news_text = st.text_area("Enter news text to check:", help="Best results with political and general news articles")
 
 # Load vectorizer
@@ -16,13 +18,13 @@ with open("finalized_model.pkl", "rb") as f:
 # Example news buttons
 col1, col2 = st.columns(2)
 with col1:
-    if st.button("📝 Try Example 1", type="secondary"):
-        st.session_state.example_text = "The United Nations Security Council voted to increase humanitarian aid to developing countries. The resolution passed with support from all permanent members. Aid will focus on healthcare, education, and infrastructure development."
+    if st.button("📝 Example 1", type="secondary"):
+        st.session_state.example_text = "The stock market rose today as investors gained confidence. Major indices including the S&P 500 and Dow Jones showed gains across most sectors. Analysts attribute the rise to strong economic reports."
         st.rerun()
         
 with col2:
-    if st.button("📝 Try Example 2", type="secondary"):
-        st.session_state.example_text = "Breaking: A new miracle pill discovered cures all diseases instantly. Doctors are shocked and angry about this breakthrough. Hospitals will go out of business. Big pharma is trying to hide this from the public."
+    if st.button("📝 Example 2", type="secondary"):
+        st.session_state.example_text = "EXCLUSIVE: Government secretly controlling weather with satellites! Inside source reveals decades-old conspiracy. NASA denies this, proving they have something to hide."
         st.rerun()
 
 # Fill text area with example if clicked
