@@ -43,8 +43,8 @@ def predict():
                 confidence = 100
             confidence = round(confidence, 1)
             
-            # Reverse the prediction (0=REAL, 1=FAKE)
-            final_result = "REAL" if result == 0 else "FAKE"
+            # Convert string prediction to result (model outputs 'REAL' or 'FAKE')
+            final_result = str(result)
             result_class = "real" if final_result == "REAL" else "fake"
             prediction_text = final_result
     
